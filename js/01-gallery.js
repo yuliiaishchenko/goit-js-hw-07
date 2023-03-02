@@ -17,12 +17,12 @@ function createGalleryMarkup (items) {
 };
 
 const addGalleryMarkup = createGalleryMarkup(galleryItems);
-divRef.innerHTML = addGalleryMarkup(galleryItems);
+divRef.innerHTML = addGalleryMarkup;
 
 divRef.addEventListener("click", onImageClick);
 
 function onImageClick (e) {
-    blocStandardAction(e);
+    blockStandardAction(e);
     if (e.target.nodeName !== "IMG") { return;}
 
 
