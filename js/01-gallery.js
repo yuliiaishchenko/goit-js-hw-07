@@ -6,14 +6,15 @@ console.log(galleryItems);
 const divRef = document.querySelector(".gallery");
 
 function createGalleryMarkup (items) {
-    return items.map((item) => `<div class = "gallery__item">
-    <a class = "gallery__link" href = "${item.original}"
+    return items.map(({preview, original, description}) => {
+        return `<div class = "gallery__item">
+    <a class = "gallery__link" href = "${original}">
     <img class = "gallery__image" 
-    src = "${item.preview}"
-    data-source = "${item.original}"
-    alt = "${item.descriptions}"/>
+    src = "${preview}"
+    data-source = "${original}"
+    alt = "${description}"/>
     </a>
-    </div>`).join("");
+    </div>`}).join("");
 };
 
 const addGalleryMarkup = createGalleryMarkup(galleryItems);
@@ -26,8 +27,8 @@ function onImageClick (e) {
     if (e.target.nodeName !== "IMG") { return;}
 
 
-    const instance = basicLightbox.create (`
-    <img src = "${e.target.dataset.source} width = "800" height = "600">`);
+    const instance = basicLightbox .create (`
+    <img src = "${e.target.dataset.source}" width = "800" height = "600">`);
     instance.show();
 
 divRef.addEventListener("keydown", (e) => {if (e.code === "ESCAPE"){
