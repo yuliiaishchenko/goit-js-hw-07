@@ -31,7 +31,7 @@ function onImageClick (e) {
     <img src = "${e.target.dataset.source}" width = "800" height = "600">`);
     instance.show();
 
-divRef.addEventListener("keydown", (e) => {if (e.code === "ESCAPE"){
+divRef.addEventListener("keydown", (e) => {if (e.code === "ESC"){
     instance.close();
 }});
 
